@@ -17,4 +17,7 @@ public class CreateOrderRequest {
     @Valid
     private List<OrderItemRequest> items;
 
+    /** 优惠码，可选 */
+    private String couponCode;
+
 }
