@@ -10,7 +10,8 @@ public class OrderItemRequest {
     @NotNull
     private Long bookId;
 
+    /** 改为包装类型，便于前端不传时区分"未填写"与 0 */
     @Min(1)
-    private int quantity;
+    private Integer quantity;
 
 }

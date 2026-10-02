@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,6 +36,12 @@ public class BookController {
     @Operation(summary = "图书列表")
     public List<BookResponse> list() {
         return bookService.findAll().stream().map(BookResponse::from).toList();
+    }
+
+    @GetMapping("/search")
+    @Operation(summary = "按书名或作者搜索图书")
+    public List<BookResponse> search(@RequestParam String keyword) {
+        return bookService.search(keyword).stream().map(BookResponse::from).toList();
     }
 
     @GetMapping("/{id}")
